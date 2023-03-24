@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./img/todols-removebg-preview.png" type="image/x-icon">
+    <title>todols - area de trabalho</title>
+</head>
+<body>
+    <header>
+        <a href="" class="logo">
+            <img width="140px"  src="./img/logo-tdols-2.png" alt="logo">
+        </a>
+
+        <h4 class="user-area">
+            Área de trabalho/<span>Matheus Artilles</span>
+        </h4>
+
+        <button class="btn-exit">
+            Sair 
+            <ion-icon name="exit-outline"></ion-icon>
+        </button>
+    </header>
+
+    <main>
+        <section class="section-form">
+            <form>
+                <input type="text" placeholder="digite sua tarefa">
+                <button type="submit" class="btn-add">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
+            </form>
+        </section>
+
+        <section class="task-active">
+            <h3>Tarefas para cumprir</h3>
+            <ul class="lists-active">
+                <li class="task">
+                    <button class="btn-complete">
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                    </button>
+                    <h4>
+                        id: 122
+                    </h4>
+                    <h5>
+                        Tarefa 1
+                    </h5>
+                    <span>23/03/2023</span>
+                    <button class="btn-task">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                    <button class="btn-task">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                </li>
+
+                <li class="task">
+                    <button class="btn-complete">
+                        <ion-icon name="checkmark-outline"></ion-icon>
+                    </button>
+                    <h4>
+                        id: 122
+                    </h4>
+                    <h5>
+                        Tarefa 1
+                    </h5>
+                    <span>23/03/2023</span>
+                    <button class="btn-task">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                    <button class="btn-task">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                </li>
+            </ul>
+        </section>
+
+        <section class="complete-task">
+            <h3>Tarefas finalizadas</h3>
+            <ul class="lists-complete"> 
+                <li class="task-complete">
+                    <h4>
+                        id: 124
+                    </h4>
+                    <h5>
+                        tarefa 2
+                    </h5>
+                    <span>24/03/2023</span>
+                    <button class="btn-task">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                    <button class="btn-task">
+                        <ion-icon name="refresh-outline"></ion-icon>
+                    </button>
+                </li>
+
+                <li class="task-complete">
+                    <h4>
+                        id: 124
+                    </h4>
+                    <h5>
+                        tarefa 2
+                    </h5>
+                    <span>24/03/2023</span>
+                    <button class="btn-task">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                    <button class="btn-task">
+                        <ion-icon name="refresh-outline"></ion-icon>
+                    </button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script  type = "module"  src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> 
+    <script  nomodule  src = "https://unpkg .com/ionicons@5.5.2/dist/ionicons/ionicons.js" ></script>
+</body>
+</html>
