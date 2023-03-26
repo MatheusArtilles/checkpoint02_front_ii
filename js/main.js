@@ -63,7 +63,7 @@ function complete(idLi){
             }
             
             excluir(idLi);
-            if(taskCompletes !== null) {
+            if(taskCompletes !== null || taskCompletes.length >= 0) {
                 localStorage.setItem("taskCompletes", JSON.stringify([...taskCompletes, taskObj]));
             } else {
                 localStorage.setItem("taskCompletes", JSON.stringify([taskObj]));
@@ -81,7 +81,7 @@ function refresh(id) {
                 dateTask: task.dateTask
             }
             excludeComplete(id);
-            if(taskSaves !== null || taskSaves.length == 0) {
+            if(taskSaves !== null || taskSaves.length >= 0) {
                 localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
             } else {
                 localStorage.setItem("taskSaves", JSON.stringify([taskObj]));
@@ -175,9 +175,9 @@ form.addEventListener("submit", (event)=> {
         task: input.value,
         dateTask: dataAtual
     }
-    if(taskSaves !== null || taskSaves.length === 0) {
+    if(taskSaves !== null) {
         localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
-    } else {
+    }else {
         localStorage.setItem("taskSaves", JSON.stringify([taskObj]));
     }
     addTask(taskObj.id, taskObj.task, taskObj.dateTask);
