@@ -63,7 +63,7 @@ function complete(idLi){
             }
             
             excluir(idLi);
-            if(taskCompletes !== null || taskCompletes.length >= 0) {
+            if(taskCompletes !== null) {
                 localStorage.setItem("taskCompletes", JSON.stringify([...taskCompletes, taskObj]));
             } else {
                 localStorage.setItem("taskCompletes", JSON.stringify([taskObj]));
@@ -81,13 +81,8 @@ function refresh(id) {
                 dateTask: task.dateTask
             }
             excludeComplete(id);
-            if(taskSaves !== null || taskSaves.length >= 0) {
-                localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
-            } else {
-                localStorage.setItem("taskSaves", JSON.stringify([taskObj]));
-            }
+            localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
             addTask(taskObj.id, taskObj.task, taskObj.dateTask);
-            
         }
     })
     
