@@ -10,7 +10,6 @@ const input = document.querySelector("input");
 const btnSubmit = document.querySelector(".btn-add");
 const taskSaves = JSON.parse(localStorage.getItem("taskSaves"));
 const taskCompletes = JSON.parse(localStorage.getItem("taskCompletes"));
-
 if(taskSaves !== null) {
     taskSaves.forEach(task => {
         addTask(task.id, task.task, task.dateTask);
@@ -47,9 +46,19 @@ function excludeComplete(id) {
                 taskCompletes.splice(indexTask, 1);
             }
         }
-        localStorage.setItem("taskCompletes", JSON.stringify(taskCompletes));
-        
         listComplete.removeChild(li);
+        localStorage.setItem("taskCompletes", JSON.stringify(taskCompletes));
+    }
+}
+function blurTask(id) {
+    let li = document.getElementById("" + id + "");
+    if(li) {
+        let includeBlur = li.classList.contains("blur");
+        if(includeBlur === true) {
+            li.classList.remove("blur");
+        } else {
+            li.classList.add("blur");
+        }
     }
 }
 function complete(idLi){
@@ -61,19 +70,18 @@ function complete(idLi){
                 task: task.task,
                 dateTask: task.dateTask
             }
-            
+            createCompleteTask(taskObj);
             excluir(idLi);
             if(taskCompletes !== null) {
                 localStorage.setItem("taskCompletes", JSON.stringify([...taskCompletes, taskObj]));
             } else {
                 localStorage.setItem("taskCompletes", JSON.stringify([taskObj]));
             }
-            createCompleteTask(taskObj);
         }
     })
 }
 function refresh(id) {
-    taskCompletes.forEach( task => {
+    taskCompletes.forEach(task=>{
         if(task.id == id) {
             const taskObj = {
                 id: task.id,
@@ -81,8 +89,8 @@ function refresh(id) {
                 dateTask: task.dateTask
             }
             excludeComplete(id);
-            localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
             addTask(taskObj.id, taskObj.task, taskObj.dateTask);
+            localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));  
         }
     })
     
@@ -110,9 +118,7 @@ function createCompleteTask(task) {
     btnEyes.classList.add("btn-task");
     btnEyes.classList.add("eyes");
     btnEyes.innerHTML = `<ion-icon name="eye-outline"></ion-icon>`;
-    
-
-    
+    btnEyes.setAttribute('onclick', 'blurTask('+ li.id +')');
     
     li.appendChild(h4);
     li.appendChild(h5);
@@ -121,6 +127,7 @@ function createCompleteTask(task) {
     li.appendChild(btnRefresh);
 
     listComplete.appendChild(li);
+    return li;
 }
 function addTask(id, task, dateTask){
     let li = document.createElement("li");
@@ -152,6 +159,7 @@ function addTask(id, task, dateTask){
     btnEyes.classList.add("btn-task");
     btnEyes.classList.add("eyes");
     btnEyes.innerHTML = `<ion-icon name="eye-outline"></ion-icon>`;
+    btnEyes.setAttribute('onclick', 'blurTask('+ li.id +')');
     
 
     li.appendChild(buttonLi);
@@ -161,6 +169,7 @@ function addTask(id, task, dateTask){
     li.appendChild(btnEyes);
     li.appendChild(btnTrash);
     listActive.appendChild(li);
+    return li;
 }
 form.addEventListener("submit", (event)=> {
     event.preventDefault();
@@ -170,12 +179,13 @@ form.addEventListener("submit", (event)=> {
         task: input.value,
         dateTask: dataAtual
     }
+    addTask(taskObj.id, taskObj.task, taskObj.dateTask);
     if(taskSaves !== null) {
         localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
-    }else {
+        
+    }else if(taskSaves === null){
         localStorage.setItem("taskSaves", JSON.stringify([taskObj]));
-    }
-    addTask(taskObj.id, taskObj.task, taskObj.dateTask);
+    }  
 
 })
 input.addEventListener("keydown", ()=> {

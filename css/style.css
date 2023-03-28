@@ -173,6 +173,7 @@ main {
     font-size: 0.8rem;
     font-weight: 700;
     color: #333;
+    transition: all .6s ease-in-out;
 }
 .btn-task {
     font-size: 1.4rem;
@@ -241,4 +242,19 @@ main {
     border: 2px solid #AAAAAA;
     background-color: #eee;
     border-radius: 20px;
+}
+li.blur h4 {
+    background-color: #333;
+    border-radius: 15px;
+    color: #333;
+}
+li.blur h5 {
+    background-color: #333;
+    border-radius: 15px;
+    color: #333;
+}
+li.blur span {
+    background-color: #333;
+    border-radius: 15px;
+    color: #333;
 }
