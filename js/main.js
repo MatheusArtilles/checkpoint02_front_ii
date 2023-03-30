@@ -8,8 +8,8 @@ const listActive = document.querySelector(".lists-active");
 const listComplete = document.querySelector(".lists-complete");
 const input = document.querySelector("input");
 const btnSubmit = document.querySelector(".btn-add");
-const taskSaves = JSON.parse(localStorage.getItem("taskSaves"));
-const taskCompletes = JSON.parse(localStorage.getItem("taskCompletes"));
+let taskSaves = JSON.parse(localStorage.getItem("taskSaves"));
+let taskCompletes = JSON.parse(localStorage.getItem("taskCompletes"));
 if(taskSaves !== null) {
     taskSaves.forEach(task => {
         addTask(task.id, task.task, task.dateTask);
@@ -72,11 +72,14 @@ function complete(idLi){
             }
             createCompleteTask(taskObj);
             excluir(idLi);
+            taskCompletes = taskCompletes == null ? [taskObj] : [...taskCompletes, taskObj]
+            localStorage.setItem("taskCompletes", JSON.stringify(taskCompletes));
+            /*
             if(taskCompletes !== null) {
                 localStorage.setItem("taskCompletes", JSON.stringify([...taskCompletes, taskObj]));
             } else {
                 localStorage.setItem("taskCompletes", JSON.stringify([taskObj]));
-            }
+            }*/
         }
     })
 }
@@ -90,7 +93,8 @@ function refresh(id) {
             }
             excludeComplete(id);
             addTask(taskObj.id, taskObj.task, taskObj.dateTask);
-            localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));  
+            taskSaves = taskSaves == null ? [taskObj] : [...taskSaves, taskObj]
+            localStorage.setItem("taskSaves", JSON.stringify(taskSaves));  
         }
     })
     
@@ -180,13 +184,10 @@ form.addEventListener("submit", (event)=> {
         dateTask: dataAtual
     }
     addTask(taskObj.id, taskObj.task, taskObj.dateTask);
-    if(taskSaves !== null) {
-        localStorage.setItem("taskSaves", JSON.stringify([...taskSaves, taskObj]));
+    taskSaves = taskSaves == null ? [taskObj] : [...taskSaves, taskObj]
+    
+    localStorage.setItem("taskSaves", JSON.stringify(taskSaves));
         
-    }else if(taskSaves === null){
-        localStorage.setItem("taskSaves", JSON.stringify([taskObj]));
-    }  
-
 })
 input.addEventListener("keydown", ()=> {
     if(input.value == "" || input.value === null) {
