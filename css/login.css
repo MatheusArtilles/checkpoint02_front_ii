@@ -93,6 +93,16 @@ form {
     color: #fff;
     cursor: pointer;
 }
+.link {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #AAAAAA;
+    transition: all .6s ease-in-out;
+}
+.link:hover {
+    color: #095932;
+}
 @media(max-width: 800px) {
     .toogle-menu {
         display: flex;
