@@ -92,6 +92,11 @@ form {
     background-color: #095932;
     color: #fff;
     cursor: pointer;
+    transition: all .6s ease-in-out;
+}
+.btn-submit:disabled {
+    background-color: #AAAAAA;
+    cursor: auto;
 }
 .link {
     margin-top: 15px;
