@@ -1,3 +1,7 @@
+/*
+    ESSE É UM POSSÍVEL PROJETO CASO VOCÊ QUEIRA IMPLEMENTAR UTILIZANDO O LOCALSTORAGE
+    SEM COMUNICAÇÃO COM A API DO TO-DO LIST
+*/
 let data = new Date();
 let dia = String(data.getDate()).padStart(2, '0');
 let mes = String(data.getMonth() + 1).padStart(2, '0');
@@ -74,12 +78,6 @@ function complete(idLi){
             excluir(idLi);
             taskCompletes = taskCompletes == null ? [taskObj] : [...taskCompletes, taskObj]
             localStorage.setItem("taskCompletes", JSON.stringify(taskCompletes));
-            /*
-            if(taskCompletes !== null) {
-                localStorage.setItem("taskCompletes", JSON.stringify([...taskCompletes, taskObj]));
-            } else {
-                localStorage.setItem("taskCompletes", JSON.stringify([taskObj]));
-            }*/
         }
     })
 }
