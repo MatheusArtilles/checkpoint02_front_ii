@@ -55,7 +55,16 @@ form.addEventListener("submit", (event)=> {
             setLoginUser(resposta.jwt);
          })
          .catch(erro => {
-            console.log(erro.status);
+            let dangerZone = document.querySelectorAll(".danger-zone");
+            if(erro.status == 400 || erro.status == 404){
+                dangerZone.forEach(small => {
+                    small.innerText = "Erro no email e/ou senha";
+                })
+                inputs.forEach(input => {
+                    input.style.borderColor = "red";
+                })
+                inputs[1].value = "";
+            }
          })
 
 });

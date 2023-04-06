@@ -41,6 +41,12 @@ function getUser(key){
             }
         })
 }
+function editData(data) {
+    let dataFormat = /[a-z A-Z][0-9][0-9][:][0-9][0-9][:][0-9][0-9][.][0-9][0-9][0-9][A-Z a-z]/gm;
+    let formatData = data.replace(dataFormat, '');
+    let newData = formatData.replace(/[-]/gm, '/');
+    return newData
+}
 function exclude(id) {
     let li = document.getElementById("" + id + "");
     let configReqTask = {
@@ -91,7 +97,7 @@ function complete(id) {
                     throw response;
                 }
             }).then(res => {
-                createCompleteTask(res.id, res.description, res.createdAt);
+                createCompleteTask(res.id, res.description, editData(res.createdAt));
             })
         
         listActive.removeChild(li);
@@ -123,7 +129,7 @@ function refresh(id) {
                     throw response;
                 }
             }).then(res => {
-                addTask(res.id, res.description, res.createdAt);
+                addTask(res.id, res.description, editData(res.createdAt));
             })
         
         listComplete.removeChild(li);
@@ -234,9 +240,9 @@ function getTasks(token) {
         }).then(res => {
             res.forEach(element => {
                 if(element.completed == false){
-                    addTask(element.id, element.description, element.createdAt);
+                    addTask(element.id, element.description, editData(element.createdAt));
                 }else {
-                    createCompleteTask(element.id, element.description, element.createdAt);
+                    createCompleteTask(element.id, element.description, editData(element.createdAt));
                 }
                 
             })
@@ -266,12 +272,16 @@ function setTask(descriptionTask, tokenJwtTask){
             }  
         }).then(res => {
             console.log(res);
-            addTask(res.id, res.description, res.createdAt);
+            addTask(res.id, res.description, editData(res.createdAt));
         })
 }
 form.addEventListener("submit", (event)=>{
     event.preventDefault();
-    setTask(input.value, tokenJwt);
+    if(input.value == ""){
+        alert("Não pode enviar uma tarefa vazia");
+    }else {
+        setTask(input.value, tokenJwt);
+    }
 });
 
 input.addEventListener("keydown", ()=>{
