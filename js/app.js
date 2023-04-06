@@ -7,6 +7,8 @@ const btnSubmit = document.querySelector(".btn-add");
 const listActive = document.querySelector(".lists-active");
 const listComplete = document.querySelector(".lists-complete");
 const btnExit = document.querySelector(".btn-exit");
+const audioAdd = document.querySelector(".sound-add-task");
+const trashTaskAudio = document.querySelector(".sound-trash-task");
 onload = () => {
     if(!tokenJwt) {
         alert("algo deu errado ao entrar. Tente novamente");
@@ -73,6 +75,7 @@ function exclude(id) {
             })
         
         listActive.removeChild(li);
+        trashTaskAudio.play();
     }
 }
 function complete(id) {
@@ -102,6 +105,7 @@ function complete(id) {
                 }
             }).then(res => {
                 createCompleteTask(res.id, res.description, editData(res.createdAt));
+                audioAdd.play()
             })
         
         listActive.removeChild(li);
@@ -134,6 +138,7 @@ function refresh(id) {
                 }
             }).then(res => {
                 addTask(res.id, res.description, editData(res.createdAt));
+                audioAdd.play()
             })
         
         listComplete.removeChild(li);
@@ -287,6 +292,7 @@ form.addEventListener("submit", (event)=>{
     }else {
         setTask(input.value, tokenJwt);
         input.value = "";
+        audioAdd.play()
     }
 });
 
