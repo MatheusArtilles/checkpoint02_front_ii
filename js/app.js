@@ -6,6 +6,7 @@ const input = document.querySelector("input");
 const btnSubmit = document.querySelector(".btn-add");
 const listActive = document.querySelector(".lists-active");
 const listComplete = document.querySelector(".lists-complete");
+const btnExit = document.querySelector(".btn-exit");
 onload = () => {
     if(!tokenJwt) {
         alert("algo deu errado ao entrar. Tente novamente");
@@ -15,6 +16,9 @@ onload = () => {
         getTasks(tokenJwt);
     }
 }
+btnExit.addEventListener("click", ()=> {
+    location.href = "login.html";
+})
 function getUser(key){
     let reqConfig = {
         method: 'GET',
@@ -191,6 +195,7 @@ function addTask(id, task, dateTask){
 function createCompleteTask(taskId, taskDescription, taskDate) {
     let li = document.createElement("li");
     li.classList.add("task-complete");
+    li.classList.add("task")
     li.id = taskId;
 
     let btnRefresh = document.createElement("button");
@@ -281,6 +286,7 @@ form.addEventListener("submit", (event)=>{
         alert("Não pode enviar uma tarefa vazia");
     }else {
         setTask(input.value, tokenJwt);
+        input.value = "";
     }
 });
 

@@ -245,6 +245,10 @@ main {
     background-color: #eee;
     border-radius: 20px;
 }
+.complete-task .lists-complete .task-complete h4 {
+    font-size: 0.8rem;
+    color: #333;
+}
 li.blur h4 {
     background-color: #333;
     border-radius: 15px;
