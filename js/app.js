@@ -11,7 +11,6 @@ const audioAdd = document.querySelector(".sound-add-task");
 const trashTaskAudio = document.querySelector(".sound-trash-task");
 onload = () => {
     if(!tokenJwt) {
-        alert("algo deu errado ao entrar. Tente novamente");
         location.href = "login.html";
     }else {
         getUser(tokenJwt);
@@ -19,6 +18,7 @@ onload = () => {
     }
 }
 btnExit.addEventListener("click", ()=> {
+    sessionStorage.removeItem("jwt");
     location.href = "login.html";
 })
 function getUser(key){

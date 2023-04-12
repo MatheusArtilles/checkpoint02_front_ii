@@ -57,6 +57,11 @@ form.addEventListener("submit", (event)=> {
          .catch(erro => {
             let dangerZone = document.querySelectorAll(".danger-zone");
             if(erro.status == 400 || erro.status == 404){
+                swal({
+                    icon: "warning",
+                    text: "Esse usuário não existe!",
+                    dangerMode: true
+                });
                 dangerZone.forEach(small => {
                     small.innerText = "Erro no email e/ou senha";
                 })
