@@ -3,12 +3,14 @@
     font-family: 'Poppins', sans-serif;
 }
 body {
+    transition: all .6s ease-in-out;
     overflow-x: hidden;
     padding: 0;
     box-sizing: border-box;
     margin: 0;
 }
 header {
+    transition: all .6s ease-in-out;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -22,6 +24,7 @@ header {
     color: #AAAAAA;
 }
 header .btn-exit {
+    transition: all .6s ease-in-out;
     width: 100px;
     height: 30px;
     cursor: pointer;
@@ -32,6 +35,67 @@ header .btn-exit {
     color: #fff;
     font-size: 1rem;
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+}
+header .user-area {
+    border: 1px solid #666;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toogle-menu {
+    display: none;
+    font-weight: 700;
+    font-size: 2rem;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #AAAAAA;
+}
+.navbar-menu {
+    width: 40%;
+}
+.menu-items {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.btn-dark {
+    margin: 5px;
+    width: 80px;
+    height: 30px;
+    background-color: #ccc;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    transition: all .6s ease-in-out;
+}
+.btn-dark::before {
+    transition: all .6s ease-in-out;
+    content: '';
+    background-color: #666;
+    width: 30%;
+    height: 80%;
+    position: absolute;
+    border-radius: 100%;
+    left: 2px;
+    bottom: 2px;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+}
+.btn-dark.active {
+    transition: all .6s ease-in-out;
+    background-color: #dddd;
+}
+.btn-dark.active::before {
+    transition: all .6s ease-in-out;
+    background-color: rgb(71, 71, 247);
+    transform: translateX(50px);
 }
 main {
     width: 100vw;
@@ -47,6 +111,7 @@ main {
     padding-bottom: 20px;
 }
 .section-form form {
+    transition: all .6s ease-in-out;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -59,6 +124,7 @@ main {
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
 }
 .section-form form input {
+    transition: all .6s ease-in-out;
     padding-left: 10px;
     width: 80%;
     height: 30px;
@@ -253,16 +319,19 @@ li.blur h4 {
     background-color: #333;
     border-radius: 15px;
     color: #333;
+    padding: 5px;
 }
 li.blur h5 {
     background-color: #333;
     border-radius: 15px;
     color: #333;
+    padding: 5px;
 }
 li.blur span {
     background-color: #333;
     border-radius: 15px;
     color: #333;
+    padding: 5px;
 }
 body::-webkit-scrollbar {
     width: 10px;               
@@ -279,12 +348,45 @@ body::-webkit-scrollbar-thumb {
     width: 10px;       
 }
 @media (max-width: 800px){
-    header {
+    .toogle-menu {
+        display: flex;
+        align-items: center;
+    }
+    .navbar-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #eee;
+        height: 100%;
+        width: 0;
+        border-top-right-radius: 20px;
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+        transition: all .2s ease-in-out;
+    }
+    .navbar-menu .menu-items {
+        display: none;
+        height: 100%;
         flex-direction: column;
-        height: 180px;
-        justify-content: center;
+    }
+    .toogle-menu.active + .navbar-menu {
+        width: 50%;
+    }
+    .toogle-menu.active + .navbar-menu .menu-items {
+        display: flex;
+    }
+    .logo {
+        margin-top: 10px;
+    }
+    header .btn-exit {
+        margin-bottom: 16px;
+    }
+    .btn-dark {
+        margin-bottom: 10px;
     }
     .section-form {
         margin-top: 200px;
+    }
+    .task-active .lists-active .task h4, h5, span {
+        font-size: 0.6rem;
     }
 }

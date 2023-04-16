@@ -9,6 +9,7 @@ const listComplete = document.querySelector(".lists-complete");
 const btnExit = document.querySelector(".btn-exit");
 const audioAdd = document.querySelector(".sound-add-task");
 const trashTaskAudio = document.querySelector(".sound-trash-task");
+
 onload = () => {
     if(!tokenJwt) {
         location.href = "login.html";
@@ -38,7 +39,9 @@ function getUser(key){
             }
         }).then(respost => {
             console.log(respost);
-            userName.innerText = `${respost.firstName} ${respost.lastName}`;
+            let firstNameCaractere = respost.firstName.charAt(0);
+            let lastNameCaractere = respost.lastName.charAt(0);
+            userName.innerText = `${firstNameCaractere.toUpperCase()} ${lastNameCaractere.toUpperCase()}`;
         })
         .catch(erro => {
             if(erro.status == 400 || erro.status == 401) {

@@ -1,0 +1,108 @@
+.dark {
+    transition: all .6s ease-in-out;
+    background-color: #333;
+}
+.dark header{
+    transition: all .6s ease-in-out;
+    background-color: #333;
+    color: #fff;
+}
+.dark header .user-area{
+    transition: all .6s ease-in-out;
+    border-color: #fff;
+}
+.dark header .user-name {
+    transition: all .6s ease-in-out;
+    color: #eee;
+}
+.dark .section-form form{
+    transition: all .6s ease-in-out;
+    background-color: #444;
+}
+.dark .section-form form input {
+    transition: all .6s ease-in-out;
+    color: #fff;
+    border-color: #eee;
+}
+.dark .task-active h3 {
+    transition: all .6s ease-in-out;
+    color: #eee;
+}
+.dark .task-active .lists-active .task {
+    transition: all .6s ease-in-out;
+    border-color: #52FA95;
+}
+.dark .task-active .lists-active .task .btn-complete {
+    transition: all .6s ease-in-out;
+    color: #333;
+}
+.dark .task-active .lists-active .task .btn-complete:hover {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .task-active .lists-active .task h4 {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .task-active .lists-active .task h5 {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .task-active .lists-active .task span {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .btn-task {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .btn-task:hover {
+    transition: all .6s ease-in-out;
+    background-color: #444;
+}
+.dark .complete-task {
+    transition: all .6s ease-in-out;
+    background-color: #222;
+}
+.dark .complete-task h3 {
+    transition: all .6s ease-in-out;
+    color: #fff;
+    background-color: #333;
+}
+.dark .complete-task h3::after {
+    transition: all .6s ease-in-out;
+    background-color: #333;
+}
+.dark .complete-task .lists-complete .task-complete {
+    transition: all .6s ease-in-out;
+    border-color: #444;
+    background-color: #444;
+}
+.dark .complete-task .lists-complete .task-complete h4 {
+    transition: all .6s ease-in-out;
+    color: #fff;
+}
+.dark .complete-task .lists-complete .task-complete h5 {
+    color: #fff;
+}
+.dark .complete-task .lists-complete .task-complete span {
+    color: #fff;
+}
+.dark li.blur h4{
+    background-color: #fff;
+    padding: 5px;
+}
+.dark li.blur h5 {
+    background-color: #fff;
+    padding: 5px;
+}
+.dark li.blur span {
+    background-color: #fff;
+    padding: 5px;
+}
+@media(max-width: 800px){
+    .dark .navbar-menu {
+        transition: all .6s ease-in-out;
+        background-color: #333;
+    }
+}
