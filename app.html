@@ -35,7 +35,7 @@
     </nav>
 
     </header>
-
+    
     <main>
         <section class="section-form">
             <form>
@@ -62,6 +62,25 @@
         <audio class="sound-add-task" src="./audio/04 - Pop.mp3"></audio>
         <audio class="sound-trash-task" src="./audio/03 - Pop.mp3"></audio>
     </main>
+    <div class="area-modal">
+        <div class="area-return">
+            <button class="return">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            </button>
+        </div>
+
+        <div class="modal">
+            <h4></h4>
+            <form class="form-modal">
+                <input class="input-modal" type="text" value="tarefa" disabled>
+                <button class="btn-edit-task" type="submit" disabled>Salvar Tarefa</button>
+            </form>
+            <button class="edit-task">
+                <ion-icon name="pencil-outline"></ion-icon>
+            </button>
+        </div>
+    </div>
+    
     <script src="./js/app.js"></script>
     <script src="./js/darkmode.js"></script>
     <script src="./js/mobile.js"></script>

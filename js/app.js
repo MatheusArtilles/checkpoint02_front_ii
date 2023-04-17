@@ -9,6 +9,8 @@ const listComplete = document.querySelector(".lists-complete");
 const btnExit = document.querySelector(".btn-exit");
 const audioAdd = document.querySelector(".sound-add-task");
 const trashTaskAudio = document.querySelector(".sound-trash-task");
+const exitModal = document.querySelector(".return");
+const saveNewTask = document.querySelector(".btn-edit-task");
 
 onload = () => {
     if(!tokenJwt) {
@@ -21,6 +23,13 @@ onload = () => {
 btnExit.addEventListener("click", ()=> {
     sessionStorage.removeItem("jwt");
     location.href = "login.html";
+})
+exitModal.addEventListener("click", ()=> {
+    let inputModal = document.querySelector(".input-modal");
+    inputModal.disabled = true;
+    saveNewTask.disabled = true;
+    const areaModal = document.querySelector(".area-modal");
+    areaModal.classList.remove("modal-active");
 })
 function getUser(key){
     let reqConfig = {
@@ -147,15 +156,43 @@ function refresh(id) {
         listComplete.removeChild(li);
     }
 }
-function blurTask(id) {
+function editTask() {
+    let inputModal = document.querySelector(".input-modal");
+    inputModal.disabled = false;
+    saveNewTask.disabled = false;
+}
+function showTask(id) {
     let li = document.getElementById("" + id + "");
     if(li) {
-        let includeBlur = li.classList.contains("blur");
-        if(includeBlur === true) {
-            li.classList.remove("blur");
-        } else {
-            li.classList.add("blur");
+        let areaModal = document.querySelector(".area-modal");
+        let modal = document.querySelector(".modal");
+
+        let h4 = modal.children[0];
+        h4.innerText = `#${id}`;
+
+        let inputModal = document.querySelector(".input-modal");
+
+        let btnEdit = document.querySelector(".edit-task");
+        btnEdit.setAttribute('onclick', 'editTask()');
+        let configReq = {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'authorization': tokenJwt
+            }
         }
+        fetch(`${baseApi}/tasks/${id}`, configReq)
+            .then(response => {
+                if(response.status == 201 || response.status == 200){
+                    return response.json();
+                }else {
+                    throw response;
+                }
+            }).then(res => {
+                inputModal.value = res.description;
+                areaModal.classList.add("modal-active");
+            })
+        
     }
 }
 function addTask(id, task, dateTask){
@@ -188,7 +225,7 @@ function addTask(id, task, dateTask){
     btnEyes.classList.add("btn-task");
     btnEyes.classList.add("eyes");
     btnEyes.innerHTML = `<ion-icon name="eye-outline"></ion-icon>`;
-    btnEyes.setAttribute('onclick', 'blurTask('+ li.id +')');
+    btnEyes.setAttribute('onclick', 'showTask('+ li.id +')');
     
 
     li.appendChild(buttonLi);
@@ -224,7 +261,7 @@ function createCompleteTask(taskId, taskDescription, taskDate) {
     btnEyes.classList.add("btn-task");
     btnEyes.classList.add("eyes");
     btnEyes.innerHTML = `<ion-icon name="eye-outline"></ion-icon>`;
-    btnEyes.setAttribute('onclick', 'blurTask('+ li.id +')');
+    btnEyes.setAttribute('onclick', 'showTask('+ li.id +')');
     
     li.appendChild(h4);
     li.appendChild(h5);

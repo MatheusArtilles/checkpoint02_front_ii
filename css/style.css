@@ -333,6 +333,109 @@ li.blur span {
     color: #333;
     padding: 5px;
 }
+.area-modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    transition: all .6s ease-in-out;
+}
+.area-modal.modal-active {
+    visibility: visible;
+    opacity: 1;
+}
+.area-return {
+    width: 100%;
+    padding: 10px;
+}
+.area-return .return {
+    margin-left: 30px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #52FA95;
+    cursor: pointer;
+}
+.area-modal .modal {
+    background-color: #eee;
+    border-radius: 40px;
+    margin-top: 80px;
+    height: 300px;
+    width: 550px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+.modal h4 {
+    font-size: 1.3rem;
+    color: #333;
+}
+.modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+.modal form button {
+    margin-top: 20px;
+    border-radius: 20px;
+    border: none;
+    width: 250px;
+    height: 30px;
+    font-weight: 700;
+    background-color: #095932;
+    cursor: pointer;
+    color: #fff;
+    transition: all .6s ease-in-out;
+}
+.modal form button:disabled {
+    background-color: #ccc;
+    color: #444;
+    cursor: auto;
+}
+.modal form .input-modal {
+    width: 350px;
+    height: 40px;
+    background: none;
+    border: 1px solid #52FA95;
+    border-radius: 20px;
+    outline: none;
+    transition: all .6s ease-in-out;
+}
+.modal form .input-modal:disabled {
+    border-color: #cccc;
+    color: #aaa;
+    background-color: #ddd;
+}
+.modal .edit-task {
+    position: absolute;
+    top: 55px;
+    right: 150px;
+    background: none;
+    border: 1px solid #095932;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    color: #095932;
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+}
+.modal .edit-task:hover {
+    background-color: #095932;
+    color: #fff;
+}
 body::-webkit-scrollbar {
     width: 10px;               
 }
