@@ -11,6 +11,7 @@ const audioAdd = document.querySelector(".sound-add-task");
 const trashTaskAudio = document.querySelector(".sound-trash-task");
 const exitModal = document.querySelector(".return");
 const saveNewTask = document.querySelector(".btn-edit-task");
+const formModal = document.querySelector(".form-modal");
 
 onload = () => {
     if(!tokenJwt) {
@@ -25,12 +26,62 @@ btnExit.addEventListener("click", ()=> {
     location.href = "login.html";
 })
 exitModal.addEventListener("click", ()=> {
+    fechaModal();
+})
+function fechaModal(){
     let inputModal = document.querySelector(".input-modal");
     inputModal.disabled = true;
     saveNewTask.disabled = true;
     const areaModal = document.querySelector(".area-modal");
     areaModal.classList.remove("modal-active");
+}
+formModal.addEventListener("submit", (event)=> {
+    event.preventDefault();
+    let inputModal = document.querySelector(".input-modal");
+    let modal = document.querySelector(".modal");
+    let h4Content = modal.children[0].textContent;
+    let contentNumberH4 = h4Content.replace(/[#]/gm, '');
+    let smallModal = document.querySelector(".erro-input-modal");
+    if(inputModal.value == ""){
+        inputModal.style.borderColor = "red";
+        smallModal.innerText = 'tarefa não pode ser vazia';
+        smallModal.style.color = "red"
+    } else {
+        inputModal.style.borderColor = "#ccc"
+        smallModal.textContent = '';
+        newTask(contentNumberH4, inputModal.value);
+    }
 })
+function newTask(id, value) {
+    let li = document.getElementById(`${id}`);
+    let taskAct = {
+        description: value,
+        completed: li.getAttribute('value')
+    }
+    let config = {
+        method: 'PUT',
+        body: JSON.stringify(taskAct),
+        headers: {
+            'Content-type': 'application/json',
+            'authorization': tokenJwt
+        }
+    }
+    fetch(`${baseApi}/tasks/${id}`, config)
+        .then(response => {
+            if(response.status == 200 || response.status == 201){
+                return response.json();
+            }else {
+                throw response
+            }
+        }).then(res => {
+            if(li.getAttribute('value') == 'true'){
+                li.children[1].textContent = res.description;
+            }else {
+                li.children[2].textContent = res.description;
+            } 
+        })
+    fechaModal();
+}
 function getUser(key){
     let reqConfig = {
         method: 'GET',
@@ -174,6 +225,7 @@ function showTask(id) {
 
         let btnEdit = document.querySelector(".edit-task");
         btnEdit.setAttribute('onclick', 'editTask()');
+        
         let configReq = {
             method: 'GET',
             headers: {
@@ -195,10 +247,12 @@ function showTask(id) {
         
     }
 }
+
 function addTask(id, task, dateTask){
     let li = document.createElement("li");
     li.classList.add("task");
     li.id = id;
+    li.setAttribute('value', 'false');
 
     let h5 = document.createElement("h5");
     h5.innerText = task;
@@ -242,6 +296,7 @@ function createCompleteTask(taskId, taskDescription, taskDate) {
     li.classList.add("task-complete");
     li.classList.add("task")
     li.id = taskId;
+    li.setAttribute('value', 'true');
 
     let btnRefresh = document.createElement("button");
     btnRefresh.classList.add("btn-task");

@@ -88,17 +88,23 @@
 .dark .complete-task .lists-complete .task-complete span {
     color: #fff;
 }
-.dark li.blur h4{
-    background-color: #fff;
-    padding: 5px;
+.dark .area-modal .modal {
+    background-color: #111;
 }
-.dark li.blur h5 {
-    background-color: #fff;
-    padding: 5px;
+.dark .modal h4 {
+    color: #ccc;
 }
-.dark li.blur span {
-    background-color: #fff;
-    padding: 5px;
+.dark .modal form button:disabled {
+    color: #444;
+    background-color: #222;
+}
+.dark .modal form .input-modal:disabled {
+    background-color: #222;
+    color: #444;
+}
+.dark .modal form .input-modal {
+    border: 1px solid #52FA95;
+    color: #fff;
 }
 @media(max-width: 800px){
     .dark .navbar-menu {

@@ -315,24 +315,6 @@ main {
     font-size: 0.8rem;
     color: #333;
 }
-li.blur h4 {
-    background-color: #333;
-    border-radius: 15px;
-    color: #333;
-    padding: 5px;
-}
-li.blur h5 {
-    background-color: #333;
-    border-radius: 15px;
-    color: #333;
-    padding: 5px;
-}
-li.blur span {
-    background-color: #333;
-    border-radius: 15px;
-    color: #333;
-    padding: 5px;
-}
 .area-modal {
     position: fixed;
     width: 100%;
@@ -369,9 +351,9 @@ li.blur span {
     background-color: #eee;
     border-radius: 40px;
     margin-top: 80px;
-    height: 300px;
+    height: 380px;
     width: 550px;
-    max-width: 90%;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -394,6 +376,7 @@ li.blur span {
     border-radius: 20px;
     border: none;
     width: 250px;
+    max-width: 80%;
     height: 30px;
     font-weight: 700;
     background-color: #095932;
@@ -413,6 +396,7 @@ li.blur span {
     border: 1px solid #52FA95;
     border-radius: 20px;
     outline: none;
+    max-width: 80%;
     transition: all .6s ease-in-out;
 }
 .modal form .input-modal:disabled {
@@ -423,7 +407,7 @@ li.blur span {
 .modal .edit-task {
     position: absolute;
     top: 55px;
-    right: 150px;
+    right: 80px;
     background: none;
     border: 1px solid #095932;
     border-radius: 10px;
