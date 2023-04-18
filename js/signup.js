@@ -1,8 +1,3 @@
-const btnMobile = document.querySelector(".toogle-menu");
-btnMobile.addEventListener("click", ()=>{
-    btnMobile.classList.toggle("active");
-});
-
 const inputs = document.querySelectorAll(".input-form");
 const form = document.querySelector("form");
 const btnSubmit = document.querySelector(".btn-submit");

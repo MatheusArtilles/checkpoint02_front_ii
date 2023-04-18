@@ -17,9 +17,11 @@ onload = () => {
     if(!tokenJwt) {
         location.href = "login.html";
     }else {
+
         getUser(tokenJwt);
         getTasks(tokenJwt);
     }
+    getDarkMode();
 }
 btnExit.addEventListener("click", ()=> {
     sessionStorage.removeItem("jwt");

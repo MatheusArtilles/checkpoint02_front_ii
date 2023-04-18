@@ -460,6 +460,7 @@ body::-webkit-scrollbar-thumb {
     }
     .toogle-menu.active + .navbar-menu .menu-items {
         display: flex;
+        transition: all .6s ease-in;
     }
     .logo {
         margin-top: 10px;

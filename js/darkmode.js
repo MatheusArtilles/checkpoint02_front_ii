@@ -1,11 +1,6 @@
 const btnDark = document.querySelector(".btn-dark");
 const darkMode = document.querySelector("body");
 
-
-getDarkMode();
-
-
-
 btnDark.addEventListener("click", ()=>{
     let bodyContains = darkMode.classList.contains("dark");
     if(bodyContains === false) {
