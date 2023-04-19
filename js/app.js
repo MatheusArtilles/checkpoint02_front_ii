@@ -15,7 +15,7 @@ const formModal = document.querySelector(".form-modal");
 
 onload = () => {
     if(!tokenJwt) {
-        location.href = "login.html";
+        location.href = "index.html";
     }else {
 
         getUser(tokenJwt);
@@ -25,7 +25,7 @@ onload = () => {
 }
 btnExit.addEventListener("click", ()=> {
     sessionStorage.removeItem("jwt");
-    location.href = "login.html";
+    location.href = "index.html";
 })
 exitModal.addEventListener("click", ()=> {
     fechaModal();
@@ -108,7 +108,7 @@ function getUser(key){
         .catch(erro => {
             if(erro.status == 400 || erro.status == 401) {
                 alert("erro no servidor. Tente novamente");
-                location.href = "login.html";
+                location.href = "index.html";
             }
         })
 }

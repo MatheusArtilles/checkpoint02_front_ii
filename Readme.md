@@ -1,7 +1,8 @@
 <h1 align="center">
-    <img src="./img/todols-removebg-preview.png">
-    seu app perfeito de tarefas
+    <img src="./img/logo-tdols-2.png">
 </h1>
+
+<h4 align="center"><strong>Seu App de Tarefas</strong></h4>
 
 ## 🚨 Sobre o Todols app 
 
@@ -31,3 +32,17 @@ Como forma de apresentar uma segunda forma de se desenvolver o aplicativo de tar
 ```
 
 Após clonar, próximo passo será rodar a página de login em seu navegador.
+
+#### 🐋 **Modo Dockerfile**
+
+Após Clonar o Repositório em sua pasta, digite os seguintes comandos.
+
+```bash
+    $ docker build -t app_todols .
+```
+<p align="center">e depois</p>
+
+```bash
+    $ docker run -d -p 80:80 app_todols
+```
+Após isso você poderá digitar em seu navegador: **localhost:80** ou somente **localhost**, e poderá ver o aplicativo sendo iniciado em seu navegador.
